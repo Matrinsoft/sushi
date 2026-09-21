@@ -1,0 +1,146 @@
+# Lithuanian translation for sushi.
+# Copyright (C) 2011 sushi's COPYRIGHT HOLDER
+# This file is distributed under the same license as the sushi package.
+# Žygimantas Beručka <zygis@gnome.org>, 2012.
+# Aurimas Černius <aurisc4@gmail.com>, 2011-2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sushi master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/sushi/issues/\n"
+"POT-Creation-Date: 2026-08-20 16:43+0000\n"
+"PO-Revision-Date: 2026-08-22 16:33+0300\n"
+"Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
+"Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.9\n"
+"X-Project-Style: gnome\n"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:9
+msgid "Sushi"
+msgstr "Suši"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:10
+msgid "Provide a facility for quickly viewing different kinds of files"
+msgstr "Pateikia galimybę greitai parodyti įvairius failus"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:12
+msgid ""
+"Sushi is a file previewer for the GNOME desktop environment. It is an "
+"independent component that integrates with GNOME Files (Nautilus)."
+msgstr ""
+"Sushi yra failų peržiūros priemonė GNOME darbalaukio aplinkai. Tai yra "
+"nepriklausomas komponentas, kuris integruojasi su GNOME Failais (Nautilus)."
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:18
+msgid "nautilus"
+msgstr "nautilus"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:19
+msgid "sushi"
+msgstr "suši"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:20
+msgid "view"
+msgstr "rodinys"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:21
+msgid "previewer"
+msgstr "peržiūros rodinys"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:22
+msgid "preview"
+msgstr "peržiūra"
+
+#: src/ui/error.blp:6
+msgid "Preview Failed"
+msgstr "Peržiūra nepavyko"
+
+#: src/ui/error.blp:14
+msgid "Copy Full Error Message"
+msgstr "Kopijuoti visą klaidos pranešimą"
+
+#: src/ui/fallback.blp:29
+msgid "Size"
+msgstr "Dydis"
+
+#: src/ui/fallback.blp:58
+msgid "Modified"
+msgstr "Pakeista"
+
+#: src/ui/html.blp:9
+msgid "Remote content is blocked to protect your privacy"
+msgstr "Nuotolinis turinys yra blokuojamas jūsų privatumui apsaugoti"
+
+#: src/ui/html.blp:10
+msgid "_Show Remote Content"
+msgstr "_Rodyti nuotolinį turinį"
+
+#: src/ui/mainWindow.blp:16
+msgid "Toggle Fullscreen"
+msgstr "Perjungti visą ekraną"
+
+#: src/ui/mainWindow.blp:23
+msgid "Open"
+msgstr "Atverti"
+
+#: src/ui/pdf.blp:48
+msgid "Previous Page"
+msgstr "Ankstesnis puslapis"
+
+#: src/ui/pdf.blp:70
+msgid "Next Page"
+msgstr "Kitas puslapis"
+
+#: src/viewers/audio.js:272
+msgid "by"
+msgstr "atlieka"
+
+#: src/viewers/audio.js:277
+msgid "from"
+msgstr "iš"
+
+#: src/viewers/fallback.js:186
+#, javascript-format
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d elementas"
+msgstr[1] "%d elementai"
+msgstr[2] "%d elementų"
+
+#: src/viewers/fallback.js:191
+msgid "Empty"
+msgstr "Tuščia"
+
+#: src/viewers/pdf.js:129
+#, javascript-format
+msgid "%d of %d"
+msgstr "%d iš %d"
+
+#~ msgid "Type"
+#~ msgstr "Tipas"
+
+#~ msgid "Empty Folder"
+#~ msgstr "Tuščias aplankas"
+
+#, javascript-format
+#~ msgid "Unable to display %s"
+#~ msgstr "Nepavyko parodyti %s"
+
+#, javascript-format
+#~ msgid "Open With %s"
+#~ msgstr "Atverti su %s"
+
+#~ msgid "Client decoration"
+#~ msgstr "Kliento apipavidalinimas"
+
+#~ msgid "Whether the window draws WM decorations itself"
+#~ msgstr "Ar langas pats piešia valdyklės apipavidalinimą"
+
+#~ msgid "Loading…"
+#~ msgstr "Įkeliama…"

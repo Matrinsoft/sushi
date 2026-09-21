@@ -1,0 +1,144 @@
+# Basque translation for sushi.
+# Copyright (C) 2011 sushi's COPYRIGHT HOLDER
+# This file is distributed under the same license as the sushi package.
+# Julen Ruiz Aizpuru <julenx@gmail.com>, 2011, 2013.
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2013, 2014.
+# Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2019, 2026.
+#
+msgid ""
+msgstr "Project-Id-Version: sushi master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/sushi/issues/\n"
+"POT-Creation-Date: 2026-08-03 11:41+0000\n"
+"PO-Revision-Date: 2025-08-07 10:00+0100\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
+"Language-Team: Basque <librezale@librezale.eus>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Project-Style: gnome\n"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:9
+msgid "Sushi"
+msgstr "Sushi"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:10
+msgid "Provide a facility for quickly viewing different kinds of files"
+msgstr "Fitxategi mota desberdinak azkar bistaratzeko tresna bat"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:12
+msgid ""
+"Sushi is a file previewer for the GNOME desktop environment. It is an "
+"independent component that integrates with GNOME Files (Nautilus)."
+msgstr "Sushi fitxategien aurrebistak izateko aplikazio bat da, GNOME mahaigaineko ingurunerako sortua. GNOME Fitxategiak (Nautilus) aplikazioarekin integratzen den osagai independentea da."
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:18
+msgid "nautilus"
+msgstr "nautilus"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:19
+msgid "sushi"
+msgstr "sushi"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:20
+msgid "view"
+msgstr "ikusi"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:21
+msgid "previewer"
+msgstr "aurrebista-sortzailea"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:22
+msgid "preview"
+msgstr "aurrebista"
+
+#: src/ui/error.blp:6
+msgid "Preview Failed"
+msgstr "Aurrebistak huts egin du"
+
+#: src/ui/error.blp:14
+msgid "Copy Full Error Message"
+msgstr "Kopiatu errore-mezu osoa"
+
+#: src/ui/fallback.blp:29
+msgid "Size"
+msgstr "Tamaina"
+
+#: src/ui/fallback.blp:58
+msgid "Modified"
+msgstr "Aldatze-data"
+
+#: src/ui/html.blp:9
+msgid "Remote content is blocked to protect your privacy"
+msgstr "Urruneko edukia blokeatu da zure pribatutasuna babesteko"
+
+#: src/ui/html.blp:10
+msgid "_Show Remote Content"
+msgstr "_Erakutsi urruneko edukia"
+
+#: src/ui/mainWindow.blp:16
+msgid "Toggle Fullscreen"
+msgstr "Ikusi pantaila osoan"
+
+#: src/ui/mainWindow.blp:22
+msgid "Open"
+msgstr "Ireki"
+
+#: src/ui/pdf.blp:48
+msgid "Previous Page"
+msgstr "Aurreko orria"
+
+#: src/ui/pdf.blp:70
+msgid "Next Page"
+msgstr "Hurrengo orria"
+
+#: src/viewers/audio.js:261
+msgid "by"
+msgstr "egilea:"
+
+#: src/viewers/audio.js:266
+msgid "from"
+msgstr "diskoa:"
+
+#: src/viewers/fallback.js:192
+#, javascript-format
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "Elementu %d"
+msgstr[1] "%d elementu"
+
+#: src/viewers/fallback.js:197
+msgid "Empty"
+msgstr "Hustu"
+
+#: src/viewers/pdf.js:134
+#, javascript-format
+msgid "%d of %d"
+msgstr "%d / %d"
+
+#~ msgid "image-missing-symbolic"
+#~ msgstr "image-missing-symbolic"
+
+#~ msgid "Type"
+#~ msgstr "Mota"
+
+#~ msgid "Empty Folder"
+#~ msgstr "Karpeta hutsa"
+
+#, javascript-format
+#~ msgid "Unable to display %s"
+#~ msgstr "Ezin da %s erakutsi"
+
+#, javascript-format
+#~ msgid "Open With %s"
+#~ msgstr "Ireki honekin: %s"
+
+#~ msgid "Client decoration"
+#~ msgstr "Bezeroaren dekorazioa"
+
+#~ msgid "Whether the window draws WM decorations itself"
+#~ msgstr "Leihoak leiho-kudeatzailearen dekorazioak marraztuko dituen edo ez"
+
+#~ msgid "Loading…"
+#~ msgstr "Kargatzen…"

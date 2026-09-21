@@ -1,0 +1,160 @@
+{
+    "app-id": "org.gnome.NautilusPreviewerDevel",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "master",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
+    "command": "sushi",
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "*.a"
+    ],
+    "finish-args": [
+        "--socket=pulseaudio",
+        "--socket=x11",
+        "--socket=wayland",
+        "--share=ipc",
+        "--share=network",
+        "--device=dri",
+        "--talk-name=org.freedesktop.FileManager1",
+        "--filesystem=home:ro",
+        "--filesystem=xdg-data/sushi:ro"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/rust-stable/bin:",
+        "build-args": [
+            "--share=network"
+        ]
+    },
+    "modules": [
+        {
+            "name": "popplerdata",
+            "no-autogen": true,
+            "make-install-args": [
+                "prefix=/app"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz",
+                    "sha256": "c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 3687,
+                        "url-template": "https://poppler.freedesktop.org/poppler-data-$version.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "poppler",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_INSTALL_LIBDIR=/app/lib",
+                "-DCMAKE_INSTALL_INCLUDEDIR=/app/include",
+                "-DBUILD_GTK_TESTS=OFF",
+                "-DBUILD_CPP_TESTS=OFF",
+                "-DENABLE_CPP=OFF",
+                "-DENABLE_BOOST=OFF",
+                "-DENABLE_GOBJECT_INTROSPECTION=OFF",
+                "-DENABLE_LIBOPENJPEG=openjpeg2",
+                "-DENABLE_QT5=OFF",
+                "-DENABLE_QT6=OFF"
+            ],
+            "cleanup": [
+                "/bin"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://poppler.freedesktop.org/poppler-26.02.0.tar.xz",
+                    "sha256": "dded8621f7b2f695c91063aab1558691c8418374cd583501e89ed39487e7ab77",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 3686,
+                        "url-template": "https://poppler.freedesktop.org/poppler-$version.tar.xz"
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "exempi",
+            "config-opts": [
+                "--disable-unittest",
+                "--disable-samples"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/libopenraw/exempi.git",
+                    "tag": "2.6.5",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$"
+                    },
+                    "commit": "01ed352bbf18c2be2bdbd0125c88901b9db0b9c3"
+                }
+            ]
+        },
+        {
+            "name": "papers",
+            "buildsystem": "meson",
+            "cleanup": [
+                "/share/GConf",
+                "/share/help"
+            ],
+            "config-opts": [
+                "-Dshell=true",
+                "-Dnautilus=false",
+                "-Ddocumentation=false",
+                "-Dpreviewer=false",
+                "-Dthumbnailer=false",
+                "-Dintrospection=enabled",
+                "-Dcomics=disabled",
+                "-Dtests=false",
+                "-Duser_doc=false",
+                "-Ddocumentation=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/papers.git",
+                    "branch": "main"
+                }
+            ]
+        },
+        {
+            "name": "sourceview-5",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dinstall-tests=false",
+                "-Ddocumentation=false",
+                "-Dvapi=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/gtksourceview.git",
+                    "tag": "5.20.0"
+                }
+            ]
+        },
+        {
+            "name": "sushi",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dprofile=development"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": ".."
+                }
+            ]
+        }
+    ]
+}

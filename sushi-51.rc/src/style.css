@@ -1,0 +1,13 @@
+.osd-bin {
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.pill-osd {
+  border-radius: 9999px;
+  padding: 6px;
+}
+
+.video-bg {
+  background-color: #000;
+}

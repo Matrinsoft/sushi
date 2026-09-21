@@ -1,0 +1,144 @@
+# Kazakh translation for sushi.
+# Copyright (C) 2014 sushi's COPYRIGHT HOLDER
+# This file is distributed under the same license as the sushi package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2014-2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sushi master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/sushi/issues/\n"
+"POT-Creation-Date: 2026-08-20 16:43+0000\n"
+"PO-Revision-Date: 2026-08-21 22:02+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <kk@li.org>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:9
+msgid "Sushi"
+msgstr "Суши"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:10
+msgid "Provide a facility for quickly viewing different kinds of files"
+msgstr "Әр түрлі файлдарды жылдам карауды қамтамасыз ету"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:12
+msgid ""
+"Sushi is a file previewer for the GNOME desktop environment. It is an "
+"independent component that integrates with GNOME Files (Nautilus)."
+msgstr ""
+"Sushi — GNOME жұмыс үстелі ортасына арналған файлды алдын ала қарау құралы. "
+"Ол GNOME файлдарымен (Nautilus) интеграцияланатын дербес компонент."
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:18
+msgid "nautilus"
+msgstr "nautilus"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:19
+msgid "sushi"
+msgstr "sushi"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:20
+msgid "view"
+msgstr "көру"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:21
+msgid "previewer"
+msgstr "previewer"
+
+#: data/org.gnome.NautilusPreviewer.metainfo.xml.in.in:22
+msgid "preview"
+msgstr "алдын ала қарау"
+
+#: src/ui/error.blp:6
+msgid "Preview Failed"
+msgstr "Алдын ала қарау сәтсіз аяқталды"
+
+#: src/ui/error.blp:14
+msgid "Copy Full Error Message"
+msgstr "Толық қате хабарламасын көшіру"
+
+#: src/ui/fallback.blp:29
+msgid "Size"
+msgstr "Өлшемі"
+
+#: src/ui/fallback.blp:58
+msgid "Modified"
+msgstr "Өзгертілген"
+
+#: src/ui/html.blp:9
+msgid "Remote content is blocked to protect your privacy"
+msgstr "Жекелігіңізді қорғау үшін қашықтағы мазмұн бұғатталған"
+
+#: src/ui/html.blp:10
+msgid "_Show Remote Content"
+msgstr "Қашықтағы мазмұнды _көрсету"
+
+#: src/ui/mainWindow.blp:16
+msgid "Toggle Fullscreen"
+msgstr "Толық экранға өту/одан шығу"
+
+#: src/ui/mainWindow.blp:23
+msgid "Open"
+msgstr "Ашу"
+
+#: src/ui/pdf.blp:48
+msgid "Previous Page"
+msgstr "Алдыңғы парақ"
+
+#: src/ui/pdf.blp:70
+msgid "Next Page"
+msgstr "Келесі парақ"
+
+#: src/viewers/audio.js:272
+msgid "by"
+msgstr "орындайтын"
+
+#: src/viewers/audio.js:277
+msgid "from"
+msgstr "альбомнан"
+
+#: src/viewers/fallback.js:186
+#, javascript-format
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d нәрсе"
+
+#: src/viewers/fallback.js:191
+msgid "Empty"
+msgstr "Бос"
+
+#: src/viewers/pdf.js:129
+#, javascript-format
+msgid "%d of %d"
+msgstr "%d, барлығы %d"
+
+#~ msgid "image-missing-symbolic"
+#~ msgstr "image-missing-symbolic"
+
+#~ msgid "Type"
+#~ msgstr "Түрі"
+
+#~ msgid "Empty Folder"
+#~ msgstr "Бос бума"
+
+#, javascript-format
+#~ msgid "Unable to display %s"
+#~ msgstr "%s көрсету мүмкін емес"
+
+#, javascript-format
+#~ msgid "Open With %s"
+#~ msgstr "%s көмегімен ашу"
+
+#~ msgid "Client decoration"
+#~ msgstr "Клиент безендіруі"
+
+#~ msgid "Whether the window draws WM decorations itself"
+#~ msgstr "Терезе ТБ безендіруін өздігінен салу керек пе"
+
+#~ msgid "Loading…"
+#~ msgstr "Жүктеу…"

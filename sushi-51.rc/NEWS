@@ -1,0 +1,595 @@
+51.rc
+=====
+
+Enhancements:
+- Add Rename (`F2`) and Trash (`Del`) shortcuts (Peter Eisenmann)
+- Add `O` as a shortcut to open a file (Peter Eisenmann)
+- Open folders in currently previewed nautilus window (Peter Eisenmann)
+- Add play/pause (`P`) shortcut for audio and video (Peter Eisenmann)
+- Use dark background for videos (Peter Eisenmann)
+- Add foundry config (Tau Gärtli)
+- Resize window on changed scale factor (Tau Gärtli)
+
+Bug Fixes:
+- Fix playing animated images using glycin (Tau Gärtli)
+- Fix re-attaching dialog to nautilus after previously closing the window (Corey Berla)
+- Ignore errors from stopped/cancelled renderers (Tau Gärtli)
+- Fix HTML renderer without WebKit availability (Corey Berla)
+- Fix attaching open-with portal dialogs (Tau Gärtli)
+- Fix and rework user resizing detection (Tau Gärtli)
+- Avoid resizes on opening of window (Tau Gärtli)
+- Fix width/height ratio of image renderer (Tau Gärtli)
+- Don't scale up small images (Tau Gärtli)
+- Prefer Glycin over Papers to handle loading TIFF files (Tau Gärtli)
+- Fix long filenames making the window too wide (Tau Gärtli)
+
+Plugins:
+- Add example with UI file and shortcuts (Peter Eisenmann)
+- Add action group setup helper (Peter Eisenmann)
+- Add relative path resolving helper (Peter Eisenmann, Tau Gärtli)
+- Rename markReady/markInitialized API functions (Tau Gärtli)
+- Add explicit markFailed error API (Peter Eisenmann)
+- Remove ResizePolicy.CUSTOM, use ResizePolicy.SCALED instead (Tau Gärtli)
+
+Backend Changes:
+- Create RendererWrapper that handles overlays and GTK window size geometry (Tau Gärtli)
+- Use SignalGroup for renderer signals (Peter Eisenmann)
+- Add cyclic heap dumping development mechanism (Peter Eisenmann)
+- Rework content type matching, remove legacy generated type list (Peter Eisenmann)
+- Report (some) video stream errors (Peter Eisenmann)
+- Separate out LibreOffice conversion logic from pdf renderer (Peter Eisenmann)
+- Only initialize PapersDocument on demand (Peter Eisenmann)
+- Add an abstraction over GLib sources and connections (Tau Gärtli, Peter Eisenmann)
+- Fix various signal-related leaks (Peter Eisenmann, Tau Gärtli)
+- Port text UI to blueprint (Tau Gärtli)
+- Make private renderer fields inaccessible to renderers (Tau Gärtli)
+- Use correct wrap mode in text renderer (Corey Berla)
+- Improve error handling (Tau Gärtli)
+- Improve reactivity for large text files (Tau Gärtli)
+
+- Translation updates (GNOME Translation Project contributors)
+
+51.beta
+=======
+
+UI changes:
+- Show a loading spinner when loading a file takes longer (Peter Eisenmann)
+- Ensure legibility of icons in statuspage (Nokse)
+- Clamp MediaControls to limit width (Nokse)
+- Wrap lines in text viewer (Peter Eisenmann)
+- Handle single- and double-click in video viewer (Peter Eisenmann)
+- Add double-click to fullscreen support to image viewer (Peter Eisenmann)
+- Enable context menu in HTML viewer (Tau Gärtli)
+- Prompt user before loading remote resources in HTML viewer (Tau Gärtli)
+- Improve loading states (Peter Eisenmann)
+- Tweak toolbar and headerbar (Peter Eisenmann)
+- Fix title for tagless files (Peter Eisenmann)
+- Always use integrated artwork (Peter Eisenmann)
+- Hide headerbar in fullscreen (Peter Eisenmann)
+- Use icon for file open button (Peter Eisenmann)
+- Preserve aspect ratio when showing images (Tau Gärtli)
+
+Known regressions:
+- Only the first frame of animated GIFs is shown
+
+Backend changes:
+- Add more mime types to the LibreOffice viewer (Nicolas Palix)
+- Add ESLint (Tau Gärtli)
+- Replace use of deprecated GJS APIs with their suggested replacements (Tau Gärtli)
+- Use Blueprint (Peter Eisenmann)
+- Handle XHTML mime type (Tau Gärtli)
+- Cancel pending operations when file is switched (Peter Eisenmann)
+- Plug memory leaks (Peter Eisenmann)
+- Overhaul plugin API and introduce a system-wide plugin path (Peter Eisenmann, Tau Gärtli)
+- Document plugin API (Peter Eisenmann)
+- Promisify async calls (Peter Eisenmann)
+- Rework hovering (Peter Eisenmann)
+- Improve handling of renderer sizing (Peter Eisenmann)
+- Use fast-content-type as fallback (Peter Eisenmann)
+
+Translations:
+- Translation updates (GNOME Translation Project contributors)
+
+51.alpha
+========
+
+Epic:
+- Port to GTK 4 (Corey Berla)
+
+UI changes:
+- Support auto dark theme for text (Corey Berla)
+- Improve audio, error and fallback renderers (Peter Eisenmann, Tau Gärtli, Nokse)
+- Allow to fullscreen independent of file type (Peter Eisenmann)
+- Animate window size changes (Nokse)
+- Keep window size unchanged once scaled by user (Peter Eisenmann)
+- Use at most a quarter of the current screen (Peter Eisenmann)
+- Show images at their real size (Tau Gärtli)
+- Use flat headerbars for some file types (Nokse)
+- Rework toolbar overlays (Nokse)
+- Modernize media controls with Gtk.MediaControls (Nokse)
+- Support custom icons (Tau Gärtli)
+- Balance headerbar buttons (Peter Eisenmann)
+- Correct window sizing (Tau Gärtli, Peter Eisenmann)
+
+Known regressions:
+- LibreOffice documents are rendered into PDFs, as the previous method is not compatible with GTK4
+
+Backend changes:
+- Adopt GtkPicture and GtkVideo (Corey Berla)
+- Port Evince to Papers (Corey Berla, Tau Gärtli)
+- Use libadwaita (Nokse, Corey Berla)
+- Replace GdkPixbuf with Glycin (Tau Gärtli)
+- Add metadata discoverer (Corey Berla)
+- Port to ES Modules (Tau Gärtli)
+- Use Blueprint (Peter Eisenmann, Tau Gärtli)
+- Add CI checks for meson, Blueprint and potfiles (Tau Gärtli)
+- Add editorconfig (Tau Gärtli)
+- Use fribidi for text direction (Peter Eisenmann)
+- Document how to run Sushi (Tau Gärtli)
+- Various code cleanups and simplifications (Corey Berla, Peter Eisenmann, Tau Gärtli)
+- Stop renderer when window is closed (Tau Gärtli)
+
+Translations:
+- Add Lao translation (Saikeo Kavhanxay)
+- Translation updates (GNOME Translation Project contributors)
+
+50.0
+====
+
+- Fix a typo (Danial Behzadi)
+- Translation updates
+
+50.rc
+====
+
+- Update nautilus preview interface (Tau Gärtli)
+- Fix a crash (Kan-Ru Chen)
+- Fix misc bugs (Balló György)
+- Translation updates
+
+46.0
+====
+
+- Make webkit2gtk optional (Yaakov Selkowitz)
+- Fix freeze when libreoffice is missing (Corey Berla)
+- Fix tick position for fullscreen video (Balló György)
+- Misc cleanup (Corey Berla)
+- Translation updates
+
+45.0
+====
+
+- Translation updates
+
+45.alpha.2
+
+- Fix build (Corey Berla)
+
+45.alpha.1
+====
+
+- Fix translatable filename (Piotr Drąg)
+
+45.alpha
+====
+
+- Fix window size with custom scale factor in x11 (Nelson Ben)
+- Don't show window before renderer is ready (Nelson Ben)
+- Allow keyboard copy shortcuts for evince and text viewers (Corey Berla)
+- Fix crash when switching between audio files (Corey Berla)
+- Fix coverart download (Corey Berla)
+- Add ParentHandle dbus property (Corey Berla)
+- Add development profile (Corey Berla)
+
+44.2
+====
+
+- Fix loading certain documents in evince (Frank Dana)
+- Translation updates
+
+43.0
+====
+
+- Another stable Sushi release
+
+43.rc
+=====
+
+- Make Webkit-4.1 a hard dependency
+
+42.0
+====
+
+- Enable web process (webkit) sandbox
+- Use EvinceView.JobLoadGFile for loading documents
+- Check for mimeTypes when populating list of viewers
+- Allow right-clicks to show context menu for GtkSourceView
+- Translation updates
+
+41.0
+====
+
+- Drop libmusicbrainz dependency (use libsoup directly)
+- Account for scale-factor when estimating window size
+- Build against webkit2gtk-4.1 (!23, Javier Jardón)
+- Disable webkit sandboxing (!18, Joel Ong)
+- Translation updates
+
+3.38.0
+======
+
+- Fix build when Wayland is disabled (Ting-Wei Lan)
+- Make X11 and Wayland configurable at build time (!12, David Heidelberg)
+- Sync font-widget with gnome-font-viewer
+- Fix various meson build issues
+- Sandbox webkitgtk
+- Fix crash caused by the lack of getters for viewers' properties
+
+3.34.0
+======
+
+- Add support for moving Nautilus selection with arrow keys (#5)
+- Add support for parenting the window on Wayland (#1)
+- Use builder-dark style for text/source viewer (#24)
+- Add localization for appdata file (!11, Piotr Drąg)
+
+3.33.90
+======
+
+- Add a command line launcher (#758253)
+- Fix viewer mimetype matching (#20, Joel Ong)
+- Load viewers from home directory (#19, Joel Ong)
+- Translation updates
+
+3.33.4
+======
+
+- Add a native LibreofficeKit renderer
+- Fix translation infrastructure regression (#18)
+- Fix loading album cover art from Amazon
+- Fix several glitches on HiDpi and fractional scaling displays
+- Respect placement of close button preference (#14)
+- Fix audio metadata tags retrieval (#13)
+- Only load a single GstTagList copy (#654500)
+- Fix displaying audio tag content with markup characters (#700589)
+- Add an appdata file (#761038)
+- Properly letterbox album cover art
+- Add a way to report loading errors in the main view
+- Scale window size with display resolution (#7)
+
+3.33.3
+======
+
+- Rewrite to use GTK directly, drop Clutter dependency
+- Use GtkSourceView 4 (Joel Ong, Martin Blanchard)
+
+3.32.0
+======
+
+- Update DOAP file for GitLab move (Andre Klapper)
+- Explicitly hide minimize and maximize (#3, Will Thompson)
+
+3.31.2
+======
+
+- Port to meson build system (Rasmus Thomsen, Will Thompson)
+- Replace some deprecated API (Martin Blanchard)
+
+3.30.0
+======
+
+- Fix miscellaneous warnings
+- Rename service file to match owned bus name
+
+3.28.3
+======
+
+- Fix another LibreOffice to PDF conversion regression (hopefully
+  for good this time)
+
+3.28.2
+======
+
+- Fix another LibreOffice to PDF conversion regression
+
+3.28.1
+======
+
+- Fix LibreOffice to PDF conversion regression (Robert McQueen)
+- Add support for docx/pptx/xlsx MIME types (Robert McQueen)
+
+3.28.0
+======
+
+- Add support for GIF animations (Princeton Ferro)
+- Use LibreOffice directly instead of unoconv (Robert McQueen)
+- Prefer LibreOffice from flatpak when installed (Robert McQueen)
+
+3.24.0
+======
+
+- Translation updates
+
+
+3.23.91
+=======
+
+- Use correct icon when fullscreen
+- Use upstream format.js code
+- Specify GdkX11 import version
+- Translation updates
+
+3.21.91
+=======
+
+- Make sushi work under Wayland
+- Fix builddir != srcdir builds
+- Translation updates
+
+3.20.0
+======
+
+- Link directly with harfbuzz (Andreas Henriksson)
+- Translation updates
+
+3.19.90 - "Hardcore Chilling"
+=============================
+
+- Port to ClutterGst 3.0 (Lionel Landwerlin)
+- Don't assume X (Matthias Clasen)
+- Don't use deprecated style classes (Matthias Clasen)
+- Port to GTask
+- Fix toolbar spacing
+- Resync font renderer from gnome-font-viewer
+
+3.18.0 - "Symbiosis"
+====================
+
+- Translation updates
+
+3.17.4 - "Dark Wave"
+====================
+
+- Apply embedded orientation to images
+- Fix encoding problems when loading non utf-8 text files
+- Do not crash when right clicking text previews
+- Add a way to easily run under gdb
+- Use regular GTK client side decorations
+- Use GResource for auxiliary data
+- Fix theming glitches after GTK update (Trinh Anh Ngoc)
+
+3.16.0
+======
+
+- Translation updates
+
+3.15.90 - "Mexican Bus"
+=======================
+
+- Fix deadlock with recent clutter/clutter-gtk
+- Don't require a parent window
+- Port HTML viewer to WebKit2 (Marcos Chavarría Teijeiro)
+- Fix margins in RTL (Yosef Or Boczko)
+- Fix toolbar icons for RTL (Yosef Or Boczko)
+
+3.12.0 - "Hippie Hill"
+======================
+
+- Translation updates
+
+3.11.90 - "Bandoliers"
+======================
+
+- Fix compatibility with js24-based GJS
+- Update for E4X removal (Dominique Leuenberger, Tim Lunn)
+- Update FSF address (Daniel Mustieles)
+
+3.10.0
+======
+
+- Make translations appear
+- Some fixes for right-to-left languages
+
+3.8.1 - "Merchandise"
+=====================
+
+- Fix a crash while loading PDF documents (Philippe Coval)
+
+3.8.0 - "Bla"
+=============
+
+- Translation updates
+
+3.7.91 - "Asleep"
+=================
+
+- Call gtk_render_background when drawing SushiFontWidget
+- Translation updates
+
+3.7.5 - "It's a New Day"
+========================
+
+- Use a better padding for the font preview
+- Remove custom CSS styling for SushiFontWidget
+- Fix the build with automake 1.13 (Nuno Araujo)
+
+3.7.4 - "Wilderness"
+====================
+
+- Use PackageKit to install unoconv if not detected at runtime
+- Drop gjs-dbus dependency (Rico Tzschichholz)
+- Translation updates
+
+3.7.3 - "Invisible"
+===================
+
+- Use the single-include header for GtkSourceView (Ryan Lortie)
+- Add some convenience functions to SushiFontWidget
+- Use a better error message in SushiFontLoader
+- Translation updates
+
+3.6.0 - "Laughing"
+==================
+
+- Fix regression where double spacebar was required to activate preview
+  from Nautilus
+- Translation updates
+
+3.5.92 - "Drop the Leash"
+=========================
+
+- Translation updates
+
+3.5.91 - "Evacuation"
+=====================
+
+- Port to libmusicbrainz5 (Jon Dowland)
+
+3.5.90 - "Spritz"
+=================
+
+- Port to GStreamer 1.0 (Tim-Philipp Müller)
+- Fix OSD toolbar positioning for the audio viewer
+
+0.5.5 - "Red Wine Liberation Front"
+===================================
+
+- Port to GDBus (Jasper St. Pierre)
+- Port to GtkApplication (Jasper St. Pierre)
+
+0.5.4 - "Nowhere Land"
+======================
+
+- Unify folder and fallback file viewers
+- Remove more of our custom theming
+- Use a higher limit when querying the MusicBrainz service (Jon Dowland)
+- Don't hardcode /bin/bash in the launcher scripts (Antoine Jacoutot)
+
+0.5.2 - "No-one Needs To Know"
+==============================
+
+- Fall back to C locale when constructing the sample string before picking an
+  entirely random-glyph string in the font widget
+- Flip font widget orientation for RTL locales
+- Always pick a valid size for fixed-size fonts in the font widget
+
+0.5.1 - "Let It Go"
+===================
+
+- Use libmusicbrainz v4 API
+- Add a preference to turn off client window decorations
+- Fix vertical interline spacing in the font viewer
+- Enable fullscreen for the font viewer
+- Use OSD style class for toolbars
+- Use GEdit GtkSourceView color scheme if available (Vadim Rutkovsky)
+- Don't install the private library in  the system libdir (Michael Biebl)
+- Use mime type list provided by Totem for gst and audio viewers
+  (Bastien Nocera)
+
+0.4.1 - "Marmot"
+================
+
+- Fix a crash when fetching album cover art
+- Move the window to the current desktop workspace when shown
+- Avoid maximization and window snapping
+- Plug some memory leaks
+
+0.4.0 - "Walking Donut"
+=======================
+
+- Translation updates
+
+0.3.92 - "Teasing Owl"
+=====================
+
+- Properly center the window title in the allocated space
+- Clear signal handlers when switching between viewers
+- Translation updates
+
+0.3.91 - "Estathé"
+==================
+
+- Ellipsize title for long filenames (Vadim Rutkovsky)
+- Use F11 as a keybinding for Fullscreen (Vadim Rutkovsky)
+- Initialize X11 threads (Gert Michael Kulyk)
+- Translation updates
+
+0.3.0 - "Casa Gori"
+===================
+
+- Quote the file path before passing it to unoconv (Vincent Untz)
+- Build with latest clutter-gtk
+- Translation updates
+
+0.2.1 - "Here and now"
+======================
+
+- Fix OSD toolbar not appearing for text files previews
+- Make sure the decoration title is centered with the close button
+- Translation updates
+
+0.2.0 - "Fuuuuuuuu"
+===================
+
+- First stable release
+- Tons of translation updates!
+
+0.1.92 - "Indie Rural Foo"
+==========================
+
+- Implement cache for cover art
+- Improve documentation
+- Tons of translation updates!
+
+0.1.90 - "Nonno Nanni"
+======================
+
+- Add a Close() remote method
+
+0.0.5 - "Coop"
+==============
+
+- Use "document-open-symbolic" for run/open toolbar buttons
+- Require latest clutter-gtk to fix underallocations with GTK+ 3.1
+- Use g_format_size() instead of g_format_size_for_display()
+- Use the GTK+ dark theme
+- UTF8-validate the text before inserting it into the
+  buffer (Ignacio Casal Quinteiro)
+
+0.0.4 - "Bianca"
+================
+
+- Relicense to GPLv2 with an exception clause to allow use
+  non-free GStreamer plugins.
+- Fix some compilation warnings (Vincent Untz)
+
+0.0.3 - "Last Night"
+====================
+
+- Add HTML viewer
+- Add text viewer
+- Add font viewer
+- Update to latest 3.1.3 platform changes
+- Too many fixes and improvements to be listed here
+
+[ 0.0.2 never actually happened ]
+0.0.2 - "Crab Conspiration"
+===========================
+
+Minor/bugfix release.
+
+- Load pixbufs asynchronously
+- Quit with 'Q'
+- Fix fullscreen scale mismatch in the image plugin
+
+0.0.1 - "Weapons of Mass Ave Destruction"
+=========================================
+
+Initial release.
+
+Support for the following content types:
+- PDF documents
+- Video files
+- Music
+- Pictures
+- Folders/Files

@@ -1,0 +1,56 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_MainWindow: Adw.ApplicationWindow {
+  content: Adw.ToolbarView toolbar_view {
+    top-bar-style: raised_border;
+
+    [top]
+    $Gjs_ShyBin {
+      child: Adw.HeaderBar titlebar {
+        decoration-layout: bind $_getDecorationLayout() as <string>;
+
+        [start]
+        Button fullscreen_button {
+          icon-name: "view-fullscreen-symbolic";
+          action-name: "win.fullscreen";
+          tooltip-text: _("Toggle Fullscreen");
+        }
+
+        [end]
+        Button {
+          icon-name: "detach-symbolic";
+          action-name: "win.open-file";
+          tooltip-text: _("Open");
+        }
+      };
+    }
+
+    content: Stack mainStack {
+      visible-child: spinner;
+
+      StackPage loading {
+        child: Adw.Spinner spinner {};
+      }
+    };
+  };
+
+  ShortcutController {
+    scope: managed;
+
+    Shortcut {
+      trigger: "f";
+      action: "action(win.fullscreen)";
+    }
+
+    Shortcut {
+      trigger: "F11";
+      action: "action(win.fullscreen)";
+    }
+
+    Shortcut {
+      trigger: "o";
+      action: "action(win.open-file)";
+    }
+  }
+}

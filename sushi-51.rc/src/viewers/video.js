@@ -1,0 +1,113 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later WITH GStreamer-exception-2008
+ * SPDX-FileCopyrightText: 2011 Red Hat, Inc.
+ *
+ * Authors: Cosimo Cecchi <cosimoc@redhat.com>
+ */
+
+import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+
+import {setupActions} from '../util/action.js';
+import {Renderer, ResizePolicy} from '../core/renderer.js';
+
+export const Klass = class VideoRenderer extends Adw.Bin {
+    static {
+        GObject.registerClass({
+            Implements: [Renderer],
+            Template: 'resource:///org/gnome/NautilusPreviewer/ui/video.ui',
+            InternalChildren: [
+                'mediaControls',
+            ],
+            Properties: {
+                stream: GObject.ParamSpec.object(
+                    'stream',
+                    'Stream',
+                    null,
+                    GObject.ParamFlags.READABLE,
+                    Gtk.MediaStream
+                ),
+            },
+        }, this);
+    }
+
+    get stream() {
+        return this._stream ?? null;
+    }
+
+    #errorHandleId = 0;
+    #prepareHandleId = 0;
+
+    constructor(file, _fileInfo, constructProperties = {}) {
+        super(constructProperties);
+
+        setupActions(this, 'video', [
+            ['play-pause', () => this._togglePlay()],
+        ]);
+
+        this._stream = Gtk.MediaFile.new_for_file(file);
+        this._stream.loop = true;
+        this._stream.play();
+        this.notify('stream');
+
+        this.#prepareHandleId = this._stream.connect('notify::prepared', () => {
+            this.#unsetPrepareHandleId();
+            this.markReady();
+        });
+        this.#errorHandleId = this._stream.connect(
+            'notify::error', mediaFile => {
+                if (mediaFile.error)
+                    this.markFailed(mediaFile.error);
+            });
+
+        this.markInitialized();
+    }
+
+    stop() {
+        this.#unsetPrepareHandleId();
+        this._stream.disconnect(this.#errorHandleId);
+        this._stream.clear();
+    }
+
+    get toolbar() {
+        return this._mediaControls;
+    }
+
+    #unsetPrepareHandleId() {
+        if (this.#prepareHandleId !== 0) {
+            this._stream.disconnect(this.#prepareHandleId);
+            this.#prepareHandleId = 0;
+        }
+    }
+
+    _togglePlay() {
+        if (this._stream.get_playing())
+            this._stream.pause();
+        else
+            this._stream.play();
+    }
+
+    _handleMediaClick(_, numClicks) {
+        if (numClicks === 1) {
+            this._togglePlay();
+        } else if (numClicks === 2) {
+            // reset play state from click === 1
+            this._togglePlay();
+            this.activate_action('win.fullscreen', null);
+        }
+    }
+
+    get resizePolicy() {
+        return ResizePolicy.SCALED;
+    }
+
+    get topBarStyle() {
+        return Adw.ToolbarStyle.RAISED_BORDER;
+    }
+};
+
+export const supportsContentType = contentType => {
+    const iconName = Gio.content_type_get_generic_icon_name(contentType);
+    return iconName === 'video-x-generic';
+};

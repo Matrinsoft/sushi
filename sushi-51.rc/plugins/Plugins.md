@@ -1,0 +1,50 @@
+# Plugins
+Sushi can be extended with plugins to provide preview support for additional file types.
+Desired plugins can be installed by placing them under `$HOME/.local/share/sushi/plugins-1`.
+They can also be installed system-wide by placing them in `/usr/lib/sushi/plugins-1`.
+Plugins will automatically be used the next time sushi is started.
+
+## Developers
+See the `example.js` file for a basic plugin skeleton.
+You can also look at other renderers under `src/viewers/`, e.g. `image.js` implements delayed loading and a custom size.
+
+### Renderers
+Sushi picks an appropriate previewer based on the previewed file's content type.
+Each previewer derives from the [`Renderer`](../src/core/renderer.js) interface, allowing to use the same API with all of them.
+Noteworthy functions of `Renderer` are:
+* `get cancellable` - provides a cancellable that will be cancelled if the previewer closes
+* `markReady` - call to communicate the previewer is ready to be displayed
+* `markInitialized` - call to communicate that previewer was created (not needed when `markReady` is already called)
+* `markFailed` - call with a GLib.Error as a parameter, to communicate the previewer encountered an error
+
+Additionally, `Renderer` has overridable methods that get called at appropriate times:
+* `stop` - To stop animations or media streams
+* `cleanup` - Various cleanups, e.g. disconnect child object signals
+* `resizePolicy` - See `ResizePolicy` enum
+* `topBarStyle` - Whether to use a flat or a raised window headerbar style
+
+Make sure your plugin does not keep references to itself around after getting unloaded, as this will cause memory leaks.
+A common issue is with signal handlers, so it's recommended to either use
+[`GObject.Object.connect_object`](https://gjs-docs.gnome.org/gjs/overrides.md#gobject-object-connect_object)
+or store the signal handler ID and disconnect them in `cleanup()`.
+
+### UI Files
+Renderers can use UI files, as shown in `example-with-ui-file.js` and its UI file `example-with-ui-file.ui`.
+The UI file was generated from the [Blueprint](https://gitlab.gnome.org/GNOME/blueprint-compiler) `example-with-ui-file.blp` with
+
+> `blueprint-compiler compile plugins/example-with-ui-file.blp > plugins/example-with-ui-file.ui`
+
+### Actions and Shortcuts
+The plugin API provides `setupActions`, with which a renderer can conveniently define actions.
+For such actions a shortcut can easily be added by adding a shortcut handler to the widget.
+The UI file of `example-with-ui-file` shows an example for this.
+
+### API Stability
+Sushi's modules are considered an implementation detail and may change at any time.
+Use the plugin API module at `resource://org/gnome/NautilusPreviewer/plugin-api-1.js`.
+It provides a stable interface for your plugins.
+Breaking changes will result in a new API version, indicated by a respective suffix change.
+
+## Note On Compatibility
+In version 51 the plugin directory was changed, as previous plugins become incompatible with the port to GTK4.
+For version 50 and before plugins were placed in `$HOME/.local/share/sushi/viewers`.

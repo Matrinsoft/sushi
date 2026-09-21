@@ -1,0 +1,13 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/org.gnome.NautilusPreviewer.metainfo.xml.in.in
+src/core/mainWindow.js
+src/ui/error.blp
+src/ui/fallback.blp
+src/ui/html.blp
+src/ui/mainWindow.blp
+src/ui/pdf.blp
+src/viewers/audio.js
+src/viewers/error.js
+src/viewers/fallback.js
+src/viewers/pdf.js

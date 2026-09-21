@@ -1,0 +1,79 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_FallbackRenderer: Adw.Bin {
+  Adw.StatusPage statusPage {
+    paintable: Adw.SpinnerPaintable {};
+
+    styles [
+      "compact",
+      "icon-dropshadow",
+    ]
+
+    child: Box {
+      orientation: vertical;
+      spacing: 6;
+      halign: center;
+
+      Grid {
+        column-spacing: 6;
+        row-spacing: 6;
+
+        Label {
+          layout {
+            column: 0;
+            row: 0;
+          }
+
+          halign: start;
+          label: _("Size");
+
+          styles [
+            "dimmed",
+          ]
+        }
+
+        Box {
+          layout {
+            column: 1;
+            row: 0;
+          }
+
+          spacing: 6;
+
+          Adw.Spinner spinner {}
+
+          Label sizeLabel {
+            xalign: 0.0;
+          }
+        }
+
+        Label {
+          layout {
+            column: 0;
+            row: 1;
+          }
+
+          halign: start;
+          label: _("Modified");
+
+          styles [
+            "dimmed",
+          ]
+        }
+
+        Label dateLabel {
+          layout {
+            column: 1;
+            row: 1;
+          }
+
+          /* Reserve more space than needed to prevent resizing
+           * of parent box by changing size label */
+          width-chars: 25;
+          xalign: 0.0;
+        }
+      }
+    };
+  }
+}

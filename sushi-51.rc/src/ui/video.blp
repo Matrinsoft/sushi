@@ -1,0 +1,35 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_VideoRenderer: Adw.Bin {
+  styles [
+    "video-bg",
+  ]
+
+  child: Picture picture {
+    paintable: bind template.stream;
+
+    GestureClick {
+      pressed => $_handleMediaClick();
+    }
+  };
+
+  ShortcutController {
+    scope: managed;
+
+    Shortcut {
+      trigger: "p";
+      action: "action(video.play-pause)";
+    }
+  }
+}
+
+MediaControls mediaControls {
+  media-stream: bind template.stream;
+  valign: end;
+
+  styles [
+    "osd-bin",
+    "osd",
+  ]
+}

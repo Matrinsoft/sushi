@@ -1,0 +1,31 @@
+conf = configuration_data()
+
+conf.set('libexecdir', libexecdir)
+conf.set('app_id', app_id)
+
+configure_file(
+  input: 'org.gnome.NautilusPreviewer.service.in',
+  output: '@0@.service'.format(app_id),
+  configuration: conf,
+  install_dir: join_paths(datadir, 'dbus-1', 'services'),
+)
+
+i18n.merge_file(
+  input: configure_file(
+    input: 'org.gnome.NautilusPreviewer.metainfo.xml.in.in',
+    output: '@BASENAME@',
+    configuration: conf,
+  ),
+  output: '@0@.metainfo.xml'.format(app_id),
+  po_dir: '../po',
+  install: true,
+  install_dir: join_paths(datadir, 'metainfo'),
+)
+
+sushi_data_resources = gnome.compile_resources(
+  '@0@.data'.format(app_id),
+  'org.gnome.NautilusPreviewer.data.gresource.xml',
+  gresource_bundle: true,
+  install: true,
+  install_dir: pkgdatadir,
+)

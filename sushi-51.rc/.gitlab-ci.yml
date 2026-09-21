@@ -1,0 +1,126 @@
+include:
+  - project: 'gnome/citemplates'
+    file: 'templates/default-rules.yml'
+  - project: "Infrastructure/freedesktop-ci-templates"
+    file: "templates/fedora.yml"
+  - project: "gnome/citemplates"
+    file: "flatpak/flatpak_ci_initiative.yml"
+  - component: "gitlab.gnome.org/GNOME/citemplates/release-service@master"
+    inputs:
+      job-stage: release
+      dist-job-name: "flatpak@x86_64"
+      tarball-artifact-path: "${TARBALL_ARTIFACT_PATH}"
+
+variables:
+  FLATPAK_MODULE: "sushi"
+  TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
+
+.flatpak-vars:
+  variables:
+    MANIFEST_PATH: "flatpak/org.gnome.NautilusPreviewer.json"
+    APP_ID: "org.gnome.NautilusPreviewerDevel"
+    RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
+    BUNDLE: "sushi-dev.flatpak"
+
+stages:
+  - image
+  - review
+  - test
+  - deploy
+  - release
+
+.fedora:
+  variables:
+    FDO_DISTRIBUTION_VERSION: rawhide
+    BASE_TAG: '2026-07-05.0'
+    FDO_DISTRIBUTION_COMPRESSION_FORMAT: zstd:chunked
+    FDO_DISTRIBUTION_PACKAGES:
+      blueprint-compiler
+      git
+      meson
+      npm
+
+.fedora-x86_64:
+  extends:
+    - .fedora
+  variables:
+    FDO_DISTRIBUTION_TAG: "x86_64-$BASE_TAG"
+    FDO_UPSTREAM_REPO: gnome/sushi
+  needs:
+    - job: "update-fedora-image@x86_64"
+      optional: true
+
+update-fedora-image@x86_64:
+    extends:
+      - .fdo.container-build@fedora
+      - .fedora-x86_64
+    stage: image
+    needs: []
+    variables:
+      GIT_STRATEGY: none
+    rules:
+      - changes:
+        - .gitlab-ci.yml
+        - .gitlab/**/*
+      - if: $CI_PROJECT_NAMESPACE != "GNOME"
+        when: never
+
+potfile:
+  extends:
+    - .fdo.distribution-image@fedora
+    - .fedora-x86_64
+  stage: review
+  script:
+    - build-aux/check-potfiles.sh
+
+blueprint-format:
+  extends:
+    - .fdo.distribution-image@fedora
+    - .fedora-x86_64
+  stage: review
+  script:
+    - build-aux/check-blueprint-format.sh
+
+meson-format:
+  extends:
+    - .fdo.distribution-image@fedora
+    - .fedora-x86_64
+  stage: review
+  script:
+    - build-aux/check-meson-format.sh
+
+eslint:
+  extends:
+    - .fdo.distribution-image@fedora
+    - .fedora-x86_64
+  stage: review
+  variables:
+    LINT_REPORT: eslint-report.xml
+  script:
+    - build-aux/run-eslint.sh --output-file $LINT_REPORT --format junit --stdout
+  artifacts:
+    reports:
+      junit: $LINT_REPORT
+    when: always
+
+flatpak@x86_64:
+  extends:
+    - ".flatpak@x86_64"
+    - ".flatpak-vars"
+
+flatpak@aarch64:
+  when: manual
+  rules:
+    - if: $CI_PROJECT_NAMESPACE == "GNOME" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+  extends:
+    - ".flatpak@aarch64"
+    - ".flatpak-vars"
+
+nightly@x86_64:
+  extends: ".publish_nightly"
+  needs: ["flatpak@x86_64"]
+
+nightly@aarch64:
+  extends: ".publish_nightly"
+  needs: ["flatpak@aarch64"]

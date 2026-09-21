@@ -1,0 +1,88 @@
+using Gtk 4.0;
+using Adw 1;
+using PapersView 4.0;
+
+template $Gjs_PdfRenderer: Adw.Bin {
+  child: ScrolledWindow {
+    propagate-natural-height: true;
+    propagate-natural-width: true;
+
+    child: PapersView.View view {
+      model: PapersView.DocumentModel model {
+        annotation-model: PapersView.AnnotationModel {};
+
+        continuous: true;
+        sizing-mode: fit_width;
+        page-changed => $_updatePageLabel();
+      };
+
+      annotations-context: PapersView.AnnotationsContext {
+        document-model: model;
+
+        undo-context: PapersView.UndoContext {
+          document-model: model;
+        };
+      };
+
+      search-context: PapersView.SearchContext {
+        document-model: model;
+      };
+    };
+  };
+
+  ShortcutController {
+    scope: managed;
+
+    Shortcut {
+      trigger: "<Ctrl>c";
+      action: "action(pdf.copy)";
+    }
+  }
+}
+
+Box toolbar {
+  halign: start;
+  valign: end;
+  spacing: 18;
+
+  styles [
+    "osd",
+    "pill-osd",
+  ]
+
+  Button toolbarBack {
+    icon-name: "go-previous-symbolic";
+    clicked => $_goPreviousPage();
+
+    accessibility {
+      label: _("Previous Page");
+    }
+
+    styles [
+      "circular",
+      "flat",
+    ]
+  }
+
+  Label pageLabel {
+    visible: false;
+
+    styles [
+      "numeric",
+    ]
+  }
+
+  Button toolbarForward {
+    icon-name: "go-next-symbolic";
+    clicked => $_goNextPage();
+
+    accessibility {
+      label: _("Next Page");
+    }
+
+    styles [
+      "circular",
+      "flat",
+    ]
+  }
+}
